@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <script src="jquery-1.11.1.js"></script>
+  <script src="jquery.serializejson.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+  </head>
+
+  <body>
+
+    <h3>Partner's message:</h3>
+    <ul class="messages"></ul>
+
+    <form class="new-message-form">
+      <label>
+        Your message:
+        <input type="text" name="to_send"></input>
+      </label>
+      <button>Send Message</button>
+    </form>
+
+    <script src="javascripts/chat.js"></script>
+    <script src="javascripts/chat_ui.js"></script>
+  </body>
+</html>
