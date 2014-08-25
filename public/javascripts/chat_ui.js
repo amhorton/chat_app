@@ -4,7 +4,7 @@ $(document).ready(function () {
 
   socket.on('message', function(event) {
     $(".messages").append(
-      "<li>"+ event.nickname + ": " + event.text + "</li>"
+      "<li>"+ "(" + event.roomName + ") " + event.nickname + ": " + event.text + "</li>"
     );
   });
 
@@ -12,6 +12,20 @@ $(document).ready(function () {
     $(".messages").append(
       "<li><i>"+ event.oldName + " changed name to " + event.newName + "</i></li>"
     );
+  });
+
+  socket.on('updateRooms', function(event) {
+    for (var key in event) {
+      var string = "<li>" + key + "<ul>";
+
+      event[key].forEach(function(member) {
+        string += "<li>" + member + "</li>";
+      });
+
+      string += "</ul></li>";
+    }
+
+    $(".all-rooms").html(string);
   });
 
   var ourChat = new ChatApp.Chat(socket);
